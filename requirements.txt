@@ -11,4 +11,3 @@ flask_session
 werkzeug
 pandas
 pyserial
-csv
