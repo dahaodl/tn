@@ -3,8 +3,6 @@ olefile
 opencv-python
 Pillow
 qrcode
-six
-zbarlight
 tensorflow
 flask
 flask_session
