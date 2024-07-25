@@ -10,6 +10,5 @@ flask
 flask_session
 werkzeug
 pandas
-glob
 pyserial
 csv
