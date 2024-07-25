@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <div style="background-color:#f8f8f8"></div>
+	<style>
+	.upload-containter {
+	  width: 100%;
+	  height: 300px;
+	  padding: 12px;
+	  border-radius: 12px;
+      background-color: white;
+	}
+	#inputFile1 {
+	  width: 100%;
+	  height: 80%;
+	  opacity:0;
+	  z-index:5;
+	}
+	.guide {
+	  position:absolute;
+	  padding:5vh;
+	  width: 100%;
+	  height: 100%;
+	  z-index:-2;
+	}
+	</style>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<body style="background-color: bisque;">
+<div class="container-xl mt-2 d-flex flex-column justify-content-center">
+    <div class="header">
+        <h3 style="margin-top:5vh;" class="text-muted">Tải ảnh</h3>
+    </div>
+    <hr/>
+    <div>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-6">
+					<div class="upload-containter">
+						<div class="h6 text-center">
+							<p> Kéo thả ảnh từ máy tính vào khung này </p>
+							<p> Hoặc nhấp vào đây để chọn ảnh từ máy bạn</p>
+						</div>
+						<input type="file" name="file" multiple="multiple" id="inputFile1"><br/><br/>
+					</div>
+                    <input class="btn btn-primary mt-2" type="submit" value="Dự đoán">
+                </div>
+                <div class="col-lg-6">
+                    <img id="imagen"><br/>
+                </div>
+            </div>
+        </form>
+          <form action="/bridge" method="post" id="form1"> 
+            <button class="btn btn-info mt-2" type="submit" name="check" value="back">Về trang chủ</button>
+          </form>
+    </div>
+	
+	<button onclick="rotateImageClockWise()">Xoay bài</button>
+</div>
+</body>
+<script>
+    function init() {
+        var inputFile = document.getElementById('inputFile1');
+        var inputFile2 = document.getElementById('Dropbox');
+        inputFile.addEventListener('change', mostrarImagen, false);
+        inputFile2.addEventListener('change', mostrarImagen, false);
+    }
+    function mostrarImagen(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var img = document.getElementById('imagen');
+            img.src = event.target.result;
+            img.width = 500;
+            img.height = 500;
+        }
+        reader.readAsDataURL(file);
+    }
+    window.addEventListener('load', init, false);
+	function rotateImageClockWise() {
+		var myImage = document.getElementById("imagen");
+		myImage.style.transform = 'rotate(90deg)';
+	}
+</script>
+</html>

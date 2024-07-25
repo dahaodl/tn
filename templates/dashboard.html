@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<style type="text/css">
+      
+    th:tr{
+        color: blue;
+  
+    }
+    tr:nth-of-type(2n){
+        border: 1px solid black;
+        background-color: rgba(150, 150, 150, 0.5);
+  
+    }
+  
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<body style="background-color: bisque;">
+    <div class="container-xl mt-2" style="background-color: whitesmoke;">
+        <table class="table d-flex justify-content-center pt-2">
+                <tr>
+                    <th scope="col">Câu</th>
+                    <th scope="col">Đáp án</th>
+                    <!-- <th>Đáp án thực tế</th>  -->
+                </tr>
+
+			<img src="{{url_for('static', filename='kq.png')}}" alt="User Image">
+			<table style="margin-left: 20px;">
+				<th>
+					<tr style="color: green; ">    
+					<td>Chọn</td>
+					<td>Đáp án</td>
+					<td>Kết quả</td>
+			</tr>
+				</th>
+			{%for i in range(0, length)%}
+			<tr>
+				<td>{{answersArray[i]}}</td>
+				<td>{{charArray[i]}}</td>
+				<td>{{compareArray[i]}}</td>
+			  
+			{%endfor%}
+			  
+			</tr>
+			  
+			</table>
+			
+			<td> Đúng {{count}} câu </td>
+        </table>
+    </div> 
+
+<form action="/bridge" method="post" id="form1"> 
+            <button class="btn btn-info mt-2" type="submit" name="check" value="back">Về trang chủ</button>
+          </form>	
+</body>
